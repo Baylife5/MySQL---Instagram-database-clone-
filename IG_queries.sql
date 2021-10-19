@@ -20,7 +20,7 @@ SELECT DAYNAME(created_at) AS WEEKDAYS,
 
 SELECT user_name AS " USERS THAT HAVE NEVER POSTED ", 
        IFNULL(photo_url,"no post") AS "PHOTO EXTENTIONS"
-    FROM user INNER JOIN photos ON user.id = user_id
+    FROM user LEFT JOIN photos ON user.id = user_id
     WHERE photo_url IS NULL;
 
 
