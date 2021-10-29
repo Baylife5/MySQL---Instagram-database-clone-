@@ -11,3 +11,14 @@ CREATE TRIGGER follow_who
     END;
 $$
 DELIMITER;
+
+DELIMITER $$
+
+CREATE TRIGGER unfollowings
+    AFTER DELETE ON followers FOR EACH ROW 
+    BEGIN 
+        INSERT INTO unfollows(unfollowee_id,unfollower_id) 
+        VALUES (OLD.followee_id,OLD.follower_id);
+END; 
+$$
+DELIMITER;
