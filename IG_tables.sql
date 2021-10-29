@@ -42,6 +42,16 @@ CREATE TABLE followers(
     PRIMARY KEY(follower_id,followee_id)
 );
 
+CREATE TABLE unfollows(
+
+    unfollower_id INT NOT NULL,
+    unfollowee_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW(),
+    FOREIGN KEY(unfollower_id) REFERENCES user(id),
+    FOREIGN KEY(unfollowee_id) REFERENCES user(id),
+    PRIMARY KEY(unfollower_id,unfollowee_id)
+);
+
 
 CREATE TABLE likes(
 
